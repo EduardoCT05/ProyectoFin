@@ -4,20 +4,17 @@
 #include <iostream>
 using namespace std;
 
-
-
+// Conjunto basado en HashTableChaining: no admite duplicados.
 template <typename T>
 class HashSet : public HashTableChaining<T>
 {
-    ...
 public:
     // Constructor que reusa el de la base (paso el tamaño de la tabla)
-    HashSet(unsigned int size) : HashTableChaining<T>(size)
-    {
-        // aquí no necesito más lógica; la base ya reservó memoria
-    }
+    explicit HashSet(unsigned int size)
+        : HashTableChaining<T>(size) {}
 
     // Override del Add original para evitar duplicados.
+    // Firma idéntica a la base: Add(T element)
     void Add(T element) override
     {
         // Sólo inserto si no existe (esto es lo que lo convierte en "set")

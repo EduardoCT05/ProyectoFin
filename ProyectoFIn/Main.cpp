@@ -1,13 +1,13 @@
-// main.cpp
 #include <iostream>
 #include "BinarySearchTree.h"
-#include "HashTableChaining.h"   
-
+#include "HashTableChaining.h"  
+#include "HashSet.h"            
 
 using namespace std;
 
+// Ejemplo de pruebas con BinarySearchTree
 static void EjecutarPruebaBST() {
-    cout << "\nPRUEBA: BinarySearchTree\n";
+    cout << "\n PRUEBA: BinarySearchTree \n";
 
     BinarySearchTree<int> tree;
 
@@ -49,10 +49,45 @@ static void EjecutarPruebaBST() {
     tree.ClearPostOrderRecursive();
     tree.InOrderWithRecursive();
 
-    cout << "==== FIN PRUEBA: BinarySearchTree ====\n";
+    cout << " FIN PRUEBA: BinarySearchTree \n";
+}
+
+// Ejemplo de pruebas con HashSet
+static void EjecutarPruebaHashSet() {
+    cout << "\n PRUEBA: HashSet \n";
+
+    // tamaño pequeño para ver colisiones fácilmente
+    HashSet<int> set(5);
+
+    // Inserciones (10 duplicado)
+    set.Add(10);
+    set.Add(15);
+    set.Add(20);
+    set.Add(10); // duplicado: no debe agregarse
+
+    cout << "\nContenido del HashSet (sin duplicados):\n";
+    set.Print();
+
+    cout << "\nContains(15): " << (set.Contains(15) ? "Si" : "No") << '\n';
+    cout << "Contains(99): " << (set.Contains(99) ? "Si" : "No") << '\n';
+
+    cout << "\nRemove(15):\n";
+    set.Remove(15);
+    set.Print();
+
+    cout << "\nIntentando Remove(99):\n";
+    try {
+        set.Remove(99); // no existe -> lanza excepción
+    }
+    catch (const exception& e) {
+        cerr << "Excepción capturada: " << e.what() << '\n';
+    }
+
+    cout << " FIN PRUEBA: HashSet \n";
 }
 
 int main() {
     EjecutarPruebaBST();
+    EjecutarPruebaHashSet();
     return 0;
 }

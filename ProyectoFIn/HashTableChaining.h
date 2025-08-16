@@ -99,7 +99,7 @@ public:
         return false;
     }
 
-    //Print: recorre todos los buckets e imprime lo que haya en cada uno.
+    // Print: recorre todos los buckets e imprime lo que haya en cada uno.
     void Print()
     {
         for (unsigned int i = 0; i < arraySize; ++i)
@@ -114,4 +114,6 @@ public:
     }
 };
 
-static inline void HashTableChainingExample() {}
+// Si en algún lado quedó la declaración, dejo una definición vacía
+// para evitar error de enlazado (linker) por símbolo no definido.
+inline void HashTableChainingExample() {}
